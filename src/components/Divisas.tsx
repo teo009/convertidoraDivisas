@@ -71,7 +71,7 @@ const Divisas = () => {
 
             <ButtonCalculate 
                 onPress={handleCalcular} 
-                color='dark'
+                color='light'
                 text='Calcular'
             />
 
