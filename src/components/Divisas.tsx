@@ -64,7 +64,11 @@ const Divisas = () => {
             </Text>
 
             <Textos  text='Divisas' type='title' />
-            
+            <Textos 
+                type='comment'
+                text='Recuerda usar las clasves (dolar, cordoba y euro)
+                    en las opciones (origen y destino)'
+            />
 
         </View>
     )
@@ -82,7 +86,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     result: {
-        fontSize: 50,
+        fontSize: 40,
         color: 'lightslategrey',
         justifyContent: 'center',
         alignItems: 'center',

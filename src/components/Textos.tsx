@@ -11,7 +11,6 @@ const Textos = ({ text, type }: Props) => {
         
         <Text 
             style={[
-                styles.text,
                 type === 'title' ? styles.title : null,
                 type === 'comment' ? styles.comment : null,
                 type === 'normal' ? styles.normal : null
@@ -26,21 +25,20 @@ const Textos = ({ text, type }: Props) => {
 export default Textos
 
 const styles = StyleSheet.create({
-    text: {
-        
-    },
     title: {
         fontSize: 40,
         position: 'absolute',
-        top: 35,
+        top: 30,
         left: 20,
         color: 'darkslategrey'
     },
     comment: {
-        fontSize: 20
+        fontSize: 12,
+        textAlign: 'center',
+        color: 'darkslategrey'
     },
     normal: {
         color: 'black',
-        padding: 10
+        padding: 5
     }
 })
