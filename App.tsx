@@ -5,10 +5,7 @@ import Divisas from './src/components/Divisas';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Divisas></Divisas>
-      <StatusBar style="auto" />
-    </View>
+    <Divisas></Divisas>
   );
 }
 

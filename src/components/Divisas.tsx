@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
-import { View, Text } from 'react-native';
+import { View, TextInput, StyleSheet, Text } from 'react-native';
+import ButtonCalculate from './ButtonCalculate';
+import Textos from './Textos';
 
 const Divisas = () => {
 
     const [origen, setOrigen] = useState('')
     const [destino, setDestino] = useState('')
+    const [convertir, setConvertir] = useState(0)
+    const [resultado, setResultado] = useState(0)
 
     const handleChangeOrigen = (texto: string) => {
         setOrigen(texto)
@@ -12,14 +16,80 @@ const Divisas = () => {
     const handleChangeDestino = (texto: string) => {
         setDestino(texto)
     }
+    const handleChangeConvertir = (texto: string) => {
+        const number = parseFloat(texto)
+        setConvertir(number)
+    }
+    const handleCalcular = () => {
+        if (origen === 'dolar' && destino === 'cordoba') {
+            const result = convertir * 35
+            setResultado(result)
+        }
+    }
 
     return (
-        <View>
-            <Text>
-                Hola, stoy funcionando
+        <View style={styles.container}>
+
+            <Textos text='Origen' type='normal'></Textos>
+            <TextInput  
+                style={styles.input}
+                defaultValue={origen}
+                onChangeText={(text) => handleChangeOrigen(text)}
+            />
+
+            <Textos text='Destino' type='normal'></Textos>
+            <TextInput 
+                style={styles.input}
+                defaultValue={destino}
+                onChangeText={(text) => handleChangeDestino(text)}
+            />
+
+            <Textos text='Cantidad' type='normal'></Textos>
+            <TextInput 
+                style={styles.input}
+                defaultValue={convertir.toString()}
+                maxLength={9}
+                onChangeText={(text) => handleChangeConvertir(text)}
+            />
+
+            <ButtonCalculate 
+                onPress={handleCalcular} 
+                color='dark'
+                text='Calcular'
+            />
+
+            <Textos text='Resultado:' type='normal'></Textos>
+            <Text style={styles.result}>
+                {resultado.toString()}
             </Text>
+
+            <Textos  text='Divisas' type='title' />
+            
+
         </View>
     )
 }
 
 export default Divisas
+
+const styles = StyleSheet.create({
+    input: {
+        borderColor: 'lightslategrey',
+        borderWidth: 2,
+        borderRadius: 10,
+        paddingHorizontal: 10,
+        paddingVertical: 1,
+        textAlign: 'center',
+    },
+    result: {
+        fontSize: 50,
+        color: 'lightslategrey',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+})
