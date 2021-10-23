@@ -24,6 +24,23 @@ const Divisas = () => {
         if (origen === 'dolar' && destino === 'cordoba') {
             const result = convertir * 35
             setResultado(result)
+        } else if (origen === 'dolar' && destino === 'euro') {
+            const result = convertir * 0.80
+            setResultado(result)
+        } else if (origen === 'euro' && destino === 'cordoba') {
+            const result = convertir * 40
+            setResultado(result)
+        } else if (origen === 'euro' && destino === 'dolar') {
+            const result = convertir * 1.20
+            setResultado(result)
+        } else if (origen === 'cordoba' && destino === 'dolar') {
+            const result = convertir * 0.020
+            setResultado(result)
+        } else if (origen === 'cordoba' && destino === 'euro') {
+            const result = convertir * 0.025
+            setResultado(result)
+        } else {
+            alert('Error, asegurese de usar argumentos validos')
         }
     }
 
@@ -66,8 +83,8 @@ const Divisas = () => {
             <Textos  text='Divisas' type='title' />
             <Textos 
                 type='comment'
-                text='Recuerda usar las clasves (dolar, cordoba y euro)
-                    en las opciones (origen y destino)'
+                text='Recuerda usar las claves (dolar, cordoba y euro) en las 
+                opciones (origen y destino) para realizar  las conversiones'
             />
 
         </View>
