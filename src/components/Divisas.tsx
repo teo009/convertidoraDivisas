@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 import { View, TextInput, StyleSheet, Text } from 'react-native';
 import ButtonCalculate from './ButtonCalculate';
 import Textos from './Textos';
+import Inputs from './Inputs'
 
 const Divisas = () => {
 
-    const [origen, setOrigen] = useState('')
-    const [destino, setDestino] = useState('')
-    const [convertir, setConvertir] = useState(0)
-    const [resultado, setResultado] = useState(0)
+    const [origen, setOrigen] = useState<string>('')
+    const [destino, setDestino] = useState<string>('')
+    const [convertir, setConvertir] = useState<number>(0)
+    const [resultado, setResultado] = useState<number>(0)
 
     const handleChangeOrigen = (texto: string) => {
         setOrigen(texto)
@@ -48,10 +49,10 @@ const Divisas = () => {
         <View style={styles.container}>
 
             <Textos text='Origen' type='normal'></Textos>
-            <TextInput  
-                style={styles.input}
+            <Inputs 
                 defaultValue={origen}
-                onChangeText={(text) => handleChangeOrigen(text)}
+                errorMessage='Solo se admite la clave de la moneda'
+                onChangeText={setOrigen}
             />
 
             <Textos text='Destino' type='normal'></Textos>
