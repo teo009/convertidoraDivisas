@@ -6,11 +6,13 @@ interface Props {
     color?: 'light' | 'dark';
     text: string;
     onPress: () => void
+    disabled: boolean;
 }
 
-const ButtonCalculate = ({ color, text, onPress }: Props) => {
+const ButtonCalculate = ({ color, text, onPress, disabled }: Props) => {
     return (
         <TouchableOpacity
+            disabled={disabled}
             onPress={onPress}
             style={[
                 styles.button,

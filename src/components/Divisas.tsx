@@ -80,6 +80,7 @@ const Divisas = () => {
                 color='light'
                 text='Convertir'
                 onPress={handleCalcular}
+                disabled={error}
             />
 
             <Textos text='Resultado:' type='normal'/>
