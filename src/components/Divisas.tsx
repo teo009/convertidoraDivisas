@@ -47,7 +47,9 @@ const Divisas = () => {
             const result = convertir * 0.025
             setResultado(result)
         } else {
-            alert('Error, asegurese de usar argumentos válidos')
+            alert(
+                'Error, asegurese de usar argumentos válidos, en los campos Origen y destino'
+            )
         }
     }
 

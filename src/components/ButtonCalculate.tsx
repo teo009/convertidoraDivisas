@@ -18,8 +18,7 @@ const ButtonCalculate = ({ color, text, onPress, disabled }: Props) => {
                 styles.button,
                 color === 'light' ? styles.light : null,
                 color === 'dark' ? styles.dark : null,
-                disabled = true ? styles.truee : null,
-                disabled = false ? styles.falsee : null,
+                disabled ? styles.disabled : null,
             ]}
         >
             <Textos text={text} type='normal'/>
@@ -46,10 +45,7 @@ const styles = StyleSheet.create({
     dark: {
         backgroundColor: 'darkslategrey'
     },
-    truee: {
-        backgroundColor: '#997777'
-    },
-    falsee: {
-        backgroundColor: 'lightslategrey'
+    disabled: {
+        backgroundColor: 'gainsboro'
     }
 })
