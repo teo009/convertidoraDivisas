@@ -41,7 +41,7 @@ const Divisas = () => {
             const result = convertir * 0.025
             setResultado(result)
         } else {
-            alert('Errorr, asegurese de usar argumentos validos')
+            alert('Error, asegurese de usar argumentos válidos')
         }
     }
 
