@@ -10,6 +10,7 @@ const Divisas = () => {
     const [destino, setDestino] = useState<string>('')
     const [convertir, setConvertir] = useState<number>(0)
     const [resultado, setResultado] = useState<number>(0)
+    const [error, setError] = useState<boolean>(false)
 
     const handleChangeOrigen = (texto: string) => {
         setOrigen(texto)
@@ -19,6 +20,11 @@ const Divisas = () => {
     }
     const handleChangeConvertir = (texto: string) => {
         const number = parseFloat(texto)
+        if (isNaN(number)) {
+            setError(true)
+        } else {
+            setError(false)
+        }
         setConvertir(number)
     }
     const handleCalcular = () => {
@@ -48,40 +54,40 @@ const Divisas = () => {
     return (
         <View style={styles.container}>
 
-            <Textos text='Origen' type='normal'></Textos>
+            <Textos text='Origen' type='normal'/>
             <Inputs 
                 defaultValue={origen}
-                errorMessage='Solo se admite la clave de la moneda'
+                errorMessage='Solo se admite clave de la moneda'
                 onChangeText={setOrigen}
             />
 
-            <Textos text='Destino' type='normal'></Textos>
-            <TextInput 
-                style={styles.input}
+            <Textos text='Destino' type='normal'/>
+            <Inputs 
                 defaultValue={destino}
-                onChangeText={(text) => handleChangeDestino(text)}
+                errorMessage='Solo se admite clave de la moneda'
+                onChangeText={setDestino}
             />
 
-            <Textos text='Cantidad' type='normal'></Textos>
-            <TextInput 
-                style={styles.input}
+            <Textos text='Cantidad' type='normal'/>
+            <Inputs 
                 defaultValue={convertir.toString()}
-                maxLength={9}
-                onChangeText={(text) => handleChangeConvertir(text)}
+                errorMessage='solo se admiten numeros'
+                onChangeText={handleChangeConvertir}
+                handleError={error}
             />
 
-            <ButtonCalculate 
-                onPress={handleCalcular} 
+            <ButtonCalculate
                 color='light'
-                text='Calcular'
+                text='Convertir'
+                onPress={handleCalcular}
             />
 
-            <Textos text='Resultado:' type='normal'></Textos>
+            <Textos text='Resultado:' type='normal'/>
             <Text style={styles.result}>
                 {resultado.toString()}
             </Text>
 
-            <Textos  text='Divisas' type='title' />
+            <Textos  text='Divisas' type='title'/>
             <Textos 
                 type='comment'
                 text='Recuerda usar las claves (dolar, cordoba y euro) en las 
@@ -95,14 +101,6 @@ const Divisas = () => {
 export default Divisas
 
 const styles = StyleSheet.create({
-    input: {
-        borderColor: 'lightslategrey',
-        borderWidth: 2,
-        borderRadius: 10,
-        paddingHorizontal: 10,
-        paddingVertical: 1,
-        textAlign: 'center',
-    },
     result: {
         fontSize: 40,
         color: 'lightslategrey',

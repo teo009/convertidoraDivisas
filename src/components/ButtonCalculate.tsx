@@ -18,7 +18,7 @@ const ButtonCalculate = ({ color, text, onPress }: Props) => {
                 color === 'dark' ? styles.dark : null,
             ]}
         >
-            <Textos text='Calcular'type='normal'></Textos>
+            <Textos text={text} type='normal'/>
         </TouchableOpacity>
     )
 }
